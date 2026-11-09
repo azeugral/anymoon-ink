@@ -309,3 +309,35 @@ h1,h2,h3,p,blockquote,figure{margin:0}
 .cidades{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:860px){.cidades{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:359px){.cidade{padding:20px 10px 14px}.cidade h3{font-size:21px}.cidade .bt{font-size:14px;padding:0 4px}}
+
+/* ---------- portfolio como galeria: passe-partout, moldura de ouro que se desenha e etiqueta de museu ---------- */
+#grade .peca .foto{padding:clamp(7px,.75vw,11px);background:var(--linho);overflow:visible;
+  box-shadow:0 0 0 1px rgba(42,29,23,.07),0 22px 34px -26px rgba(42,29,23,.45);transition:box-shadow .6s var(--ease),transform .6s var(--ease)}
+#grade .peca .tela{position:relative;display:block;width:100%;height:100%;overflow:hidden;background:var(--papel-2)}
+#grade .peca .foto::before,#grade .peca .foto::after{content:"";position:absolute;inset:calc(clamp(7px,.75vw,11px) / 2 - .5px);pointer-events:none;
+  transition:transform .75s var(--ease),opacity .4s var(--ease)}
+#grade .peca .foto::before{border-top:1px solid var(--ouro);border-bottom:1px solid var(--ouro);transform:scaleX(.4);opacity:0}
+#grade .peca .foto::after{border-left:1px solid var(--ouro);border-right:1px solid var(--ouro);transform:scaleY(.4);opacity:0}
+#grade .peca .ver{position:absolute;left:50%;bottom:calc(clamp(7px,.75vw,11px) + 12px);transform:translate(-50%,8px);opacity:0;
+  font:500 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--osso);white-space:nowrap;
+  padding:9px 14px;background:rgba(37,26,22,.72);box-shadow:inset 0 0 0 1px rgba(212,178,115,.5);backdrop-filter:blur(3px);
+  transition:opacity .45s var(--ease),transform .55s var(--ease)}
+#grade .peca .etq{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:14px;padding-bottom:7px;
+  border-bottom:1px solid rgba(169,133,70,.38);font:500 12.5px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-3)}
+#grade .peca .num{font:500 15px/1 var(--sc);letter-spacing:.06em;color:var(--ouro);text-transform:none}
+#grade .peca .leg{margin-top:8px}
+@media (hover:hover){
+  #grade .peca:hover .foto{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(169,133,70,.25),0 30px 42px -26px rgba(42,29,23,.55)}
+  #grade .peca:hover .foto::before{transform:scaleX(1);opacity:1}
+  #grade .peca:hover .foto::after{transform:scaleY(1);opacity:1}
+  #grade .peca:hover .ver{opacity:1;transform:translate(-50%,0)}
+}
+#grade .peca:focus-visible .foto::before{transform:scaleX(1);opacity:1}
+#grade .peca:focus-visible .foto::after{transform:scaleY(1);opacity:1}
+@media (max-width:520px){
+  #grade .peca .etq{margin-top:10px;font-size:11px;letter-spacing:.1em;padding-bottom:5px}
+  #grade .peca .num{font-size:13.5px}
+  #grade .peca .foto::before{transform:scaleX(1);opacity:.6}
+  #grade .peca .foto::after{transform:scaleY(1);opacity:.6}
+}
+@media (prefers-reduced-motion:reduce){#grade .peca .foto,#grade .peca .foto::before,#grade .peca .foto::after{transition:none}}

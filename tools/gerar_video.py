@@ -37,7 +37,7 @@ with sync_playwright() as p:
         print('final', im.size, im.mode, flush=True)
     if 'video' in Q:
         mp4 = S / 'assets/video/hero-pe.mp4'
-        dur = 4.9 + .5; n = round(dur * FPS)
+        dur = g.evaluate('pinturaDuracao') + .5; n = round(dur * FPS)
         x, y, s = geo(VW, VH)
         enc = subprocess.Popen([ff, '-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', str(FPS), '-c:v', 'mjpeg', '-i', '-',
                                 '-c:v', 'libx264', '-preset', 'slow', '-crf', '19', '-pix_fmt', 'yuv420p', '-profile:v', 'high',

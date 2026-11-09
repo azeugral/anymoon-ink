@@ -1,7 +1,7 @@
 /* Anymoon — site */
 (function () {
   const $ = (s, r) => (r || document).querySelector(s), $$ = (s, r) => [...(r || document).querySelectorAll(s)];
-  const D = window.DADOS, V = '?v=1';
+  const D = window.DADOS, V = '?v=2';
   const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const celular = () => innerWidth < 861;
 
@@ -177,7 +177,9 @@
   /* ---------------- portfolio ---------------- */
   const TIPO = { obras: 'Releitura de obra de arte', jardim: 'Jardim da memória' };
   const grade = $('#grade');
-  grade.innerHTML = D.pecas.map((p, i) => `<button class="peca" data-cat="${p.cat}" data-i="${i}"><span class="foto"><img src="assets/img/p/${p.id}.webp${V}" alt="${p.t}" loading="lazy" width="720" height="900"></span><span class="leg">${p.t}</span></button>`).join('');
+  const CAT = { obras: 'Releitura', jardim: 'Autoral', bichos: 'Bichos', flores: 'Flores', historias: 'Personagens' };
+  const num = i => 'Nº ' + String(i + 1).padStart(2, '0');
+  grade.innerHTML = D.pecas.map((p, i) => `<button class="peca" data-cat="${p.cat}" data-i="${i}"><span class="foto"><span class="tela"><img src="assets/img/p/${p.id}.webp${V}" alt="${p.t}" loading="lazy" width="720" height="900"></span><span class="ver">Ver de perto</span></span><span class="etq"><span class="num">${num(i)}</span><span class="tipo">${CAT[p.cat] || ''}</span></span><span class="leg">${p.t}</span></button>`).join('');
   let cat = 'todas', todas = false;
   const limite = () => celular() ? 8 : 12;
   function filtra(anima) {

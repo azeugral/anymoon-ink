@@ -1,6 +1,7 @@
 /* Anymoon — o retrato se pinta: pinceladas curvas que seguem o fluxo da imagem (WebGL2).
    pinturaHero(canvas) -> { carregar(bin, meta, foto), quadro(t, W, H, dpr, rect), ok } */
 (function () {
+  const VEL = 1.35;  /* 4,9 s -> 3,6 s */
   const VS = `#version 300 es
   precision highp float;
   layout(location=0) in vec4 aA;   // p0.xy p1.xy (normalizado)
@@ -128,6 +129,7 @@
       /* t em segundos; rect = [x, y, lado] em px CSS; fundo = cor rgb do papel (ou null = transparente) */
       quadro(t, W, H, dpr, rect, fundo) {
         if (!meta) return;
+        t *= VEL;  /* acelera a pintura inteira sem regerar as pinceladas */
         const cw = Math.round(W * dpr), ch = Math.round(H * dpr);
         if (cv.width !== cw || cv.height !== ch) { cv.width = cw; cv.height = ch; }
         const px = Math.min(4096, Math.round(rect[2] * dpr * (op.super || 1.5)));
@@ -156,5 +158,5 @@
     };
     return api;
   };
-  window.pinturaDuracao = 4.9;
+  window.pinturaDuracao = 4.9 / VEL;
 })();
