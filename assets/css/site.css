@@ -341,3 +341,44 @@ h1,h2,h3,p,blockquote,figure{margin:0}
   #grade .peca .foto::after{transform:scaleY(1);opacity:.6}
 }
 @media (prefers-reduced-motion:reduce){#grade .peca .foto,#grade .peca .foto::before,#grade .peca .foto::after{transition:none}}
+
+/* ---------- simetria no celular (10/11) ---------- */
+/* botoes centralizam o conteudo na vertical: forca o topo para as linhas da grade nao desnivelarem */
+.peca,.pagina{display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch}
+@media (max-width:860px){
+  /* legendas sempre com 2 linhas de altura: fotos e textos de cada linha no mesmo nivel */
+  .pilar{text-align:center}
+  .pilar h3{min-height:2.3em;display:flex;align-items:center;justify-content:center;text-wrap:balance}
+  .pilar p{text-wrap:balance}
+  .peca .leg,.pagina .leg{text-align:center;min-height:2.6em;text-wrap:balance}
+  #grade .peca .leg{margin-top:8px}
+  .filtros{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:380px;gap:0 4px}
+  .filtros button{padding:12px 10px}
+  .filtros button::after{left:10px;right:10px}
+  /* poema: folha centralizada e o botao colado no livro */
+  .folha{text-align:center;text-wrap:pretty}
+  .livro.fechado{box-shadow:1px 0 0 rgba(42,29,23,.07),-1px 0 0 rgba(42,29,23,.07),0 -1px 0 rgba(42,29,23,.07)}
+  .livro.fechado+.livro-mais{max-width:980px;margin:0 auto;box-shadow:0 30px 60px -36px rgba(42,29,23,.45),1px 0 0 rgba(42,29,23,.07),-1px 0 0 rgba(42,29,23,.07),0 1px 0 rgba(42,29,23,.07)}
+  /* sobre */
+  .sobre .txt{text-align:center}
+  .sobre h2{text-align:center}
+  .sobre .txt p{text-wrap:pretty}
+  .dados{text-align:center}
+  /* loja */
+  .prod{text-align:center}
+  .prod h3{min-height:2.3em;display:flex;align-items:center;justify-content:center;text-wrap:balance}
+  /* agenda: nome da cidade em uma linha so */
+  .cidade h3{white-space:nowrap;font-size:min(29px,5.6vw)}
+  /* orcamento: opcoes em grade de colunas iguais */
+  .campo>label,.campo>.rot{text-align:center}
+  .campo input,.campo textarea{text-align:center}
+  .ops{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ops button{padding:8px 6px;line-height:1.2;white-space:normal;text-wrap:balance}
+  /* rodape */
+  .rod-grade{text-align:center}
+  .rod p{margin-left:auto;margin-right:auto}
+}
+@media (max-width:520px){
+  .cidade h3{font-size:min(24px,5.4vw)}
+}
+@media (max-width:400px){.filtros button{white-space:nowrap;font-size:15px;padding:12px 2px}.filtros button::after{left:6px;right:6px}}
