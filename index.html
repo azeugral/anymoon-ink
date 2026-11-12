@@ -19,7 +19,7 @@
 <link rel="preload" href="assets/fonts/cormorant-garamond-500-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/hero/pinceladas.bin?v=2" as="fetch" crossorigin>
 <link rel="stylesheet" href="assets/css/fontes.css?v=2">
-<link rel="stylesheet" href="assets/css/site.css?v=3">
+<link rel="stylesheet" href="assets/css/site.css?v=5">
 </head>
 <body>
 <a class="saltar" href="#conteudo">Pular para o conteúdo</a>
@@ -264,8 +264,16 @@
   <button class="lb-seta lb-prox" id="lb-prox" aria-label="Próxima"><svg viewBox="0 0 22 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m2 2 18 18L2 38"/></svg></button>
 </div>
 
+<!-- quadrinho: ganha cor com a leitura e leva ao ateliê -->
+<a class="quadrinho" id="quadrinho" href="arte/" aria-label="Ateliê da Any: pinturas, ilustrações e poemas">
+  <span class="q-cinza"><img src="assets/img/quadro.webp" alt="" width="320" height="384"></span>
+  <span class="q-cor"><img src="assets/img/quadro.webp" alt="" width="320" height="384"></span>
+  <span class="q-brilho" aria-hidden="true"></span>
+  <span class="q-nome" aria-hidden="true">Ateliê</span>
+</a>
 <script src="assets/js/dados.js?v=2"></script>
 <script src="assets/js/pintura.js?v=2"></script>
 <script src="assets/js/site.js?v=2"></script>
+<script src="assets/js/quadrinho.js?v=1" defer></script>
 </body>
 </html>

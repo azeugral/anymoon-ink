@@ -382,3 +382,24 @@ h1,h2,h3,p,blockquote,figure{margin:0}
   .cidade h3{font-size:min(24px,5.4vw)}
 }
 @media (max-width:400px){.filtros button{white-space:nowrap;font-size:15px;padding:12px 2px}.filtros button::after{left:6px;right:6px}}
+
+/* ---------- quadrinho do ateliê: grafite que ganha cor com a leitura ---------- */
+.quadrinho{position:fixed;right:clamp(14px,2vw,26px);bottom:calc(clamp(14px,2vw,26px) + env(safe-area-inset-bottom));z-index:35;width:58px;aspect-ratio:320/384;
+  opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .6s var(--ease),transform .6s var(--ease);filter:drop-shadow(0 8px 12px rgba(42,29,23,.22))}
+.quadrinho.on{opacity:1;transform:none;pointer-events:auto}
+.quadrinho.on:hover{transform:translateY(-3px)}
+.quadrinho>span{position:absolute;inset:0}
+.quadrinho img{width:100%;height:100%}
+.q-cinza img{filter:grayscale(1) sepia(.18) contrast(.9) brightness(1.08);opacity:.85}
+.q-cor{clip-path:inset(calc(100% - var(--q,0%)) 0 0 0)}
+.q-brilho{-webkit-mask:url(../img/quadro.webp) center/100% 100% no-repeat;mask:url(../img/quadro.webp) center/100% 100% no-repeat;
+  background:linear-gradient(115deg,transparent 35%,rgba(255,246,214,.95) 50%,transparent 65%) no-repeat;background-size:300% 100%;background-position:120% 0;opacity:0}
+.q-nome{inset:auto 100% 50% auto!important;transform:translate(-10px,50%);white-space:nowrap;font:italic 500 18px/1 var(--serif);color:var(--ouro);text-shadow:0 1px 6px rgba(238,231,219,.35);opacity:0;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.quadrinho.pronto .q-nome,.quadrinho:hover .q-nome{opacity:1;transform:translate(-14px,50%)}
+.quadrinho.plim{animation:plim .9s var(--ease)}
+.quadrinho.plim .q-brilho{animation:reflexo 1.1s var(--ease) .1s}
+@keyframes plim{0%{transform:none}35%{transform:scale(1.07) rotate(-1.5deg)}70%{transform:scale(.99) rotate(.6deg)}100%{transform:none}}
+@keyframes reflexo{0%{opacity:1;background-position:120% 0}100%{opacity:1;background-position:-20% 0}}
+@media (max-width:520px){.quadrinho{width:46px}.q-nome{font-size:16px}}
+@media (prefers-reduced-motion:reduce){.quadrinho.plim,.quadrinho.plim .q-brilho{animation:none}}
+.rod-fim{padding-right:clamp(70px,8vw,90px)}
